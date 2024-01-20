@@ -3,28 +3,16 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const main = async () => {
-  const calculateFibonacci = () => {
-    const Numbers = [0, 1]
-  
-    for (let i = 2; i < 100; i++) {
-      const nextFibonacci = Numbers[i - 1] + Numbers[i - 2]
-      Numbers.push(nextFibonacci)
-    }
-  
-    return Numbers
+  const Fibonacci = (length, current = 0, next = 1, result = []) => {
+    return length === 0
+      ? result
+      : Fibonacci(length - 1, next, current + next, [...result, current])
   }
-  
-  const result = calculateFibonacci()
-  print(`Los primeros 100 números de Fibonacci son: ${result.join(', ')}`)
-
- /*Para que los arroje uno abajo de otro seria de esta manera
- 
- const result = calculateFibonacci()
+const main = async () => {
+  const result = Fibonacci(100)
+  print(`Los primeros 100 números de Fibonacci son: `)
   result.forEach((number) => {
     print(number)
   })
-}*/
 }
-
 module.exports = main
