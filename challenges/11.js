@@ -3,15 +3,11 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const calGrades = (n) =>{
-  const grade = (n*(Math.PI/180))
-  return grade
-}
-
+const calGrades = n => n * (Math.PI / 180)
 const main = async () => {
-  const n = await read("Ingresa un angulo:")
-  const grade = calGrades(parseFloat(n))
-  print(`El Angulo ingresado es equivalente a ${grade.toFixed(4)} radianes`)
+    const n = await read("Ingresa un angulo:")
+    const grade = calGrades(parseFloat(n))
+      print(`El Angulo ingresado es equivalente a ${grade.toFixed(4)} radianes`)
 }
 
 module.exports = main

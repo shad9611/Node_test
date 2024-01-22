@@ -3,12 +3,10 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const hexadecimal = (num)=>{
-    return num.toString(16)
-}
+const hexadecimal = num => num.toString(16)
 const main = async () => {
-  const input = await readNumber("ingresa un numero")
-  const result = hexadecimal(input)
-  print(`El numero hexadecimal de ${input} es: ${result}`)
+    const input = await readNumber("ingresa un numero")
+    const result = hexadecimal(input)
+      print(`El numero hexadecimal de ${input} es: ${result}`)
 }
 module.exports = main

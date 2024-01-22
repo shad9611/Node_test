@@ -12,25 +12,27 @@ const romanNumbers = [
   { symbol: 'D', value: 500 },
   { symbol: 'M', value: 1000 }
 ]
-
-
-const romanToDecimal = (roman) => { 
-  roman = roman.toUpperCase()
-  let result = 0
-  for(let i = 0; i<roman.length; i++){
-    const currentSymbol = romanNumbers.find( num => num.symbol === roman[i])
-    if(!currentSymbol){
-      print("Simbolo no valido")
+const findRomanNumber = symbol => romanNumbers.find(num => num.symbol === symbol)
+const romanToDecimalRec = (roman, result = 0, i = 0) => {
+  if (i < roman.length) {
+    const currentSymbol = findRomanNumber(roman[i])
+    if (!currentSymbol) {
+        print("Simbolo no valido")
       return
     }
-    const nextSymbol = romanNumbers.find( num => num.symbol === roman[i+1])
-    if(nextSymbol && nextSymbol.value > currentSymbol.value){
+    const nextSymbol = findRomanNumber(roman[i + 1])
+    if (nextSymbol && nextSymbol.value > currentSymbol.value) {
       result -= currentSymbol.value
-    }else {
+    } else {
       result += currentSymbol.value
     }
+    return romanToDecimalRec(roman, result, i + 1)
   }
   return result
+}
+const romanToDecimal = (roman) => {
+  roman = roman.toUpperCase()
+  return romanToDecimalRec(roman)
 }
 const main = async () => {
   const input = await read("Ingresa un número romano: ")

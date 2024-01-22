@@ -11,12 +11,17 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const main = async () => {
-  print("Grados\tSeno")
-  for(let i = 0; i <=359; i++){
-    const radians = i *(Math.PI/180)
+const imprSeno = (i, grades) =>{
+  if (i <= grades) {
+    const radians = i * (Math.PI / 180)
     const sin = Math.sin(radians)
-    print(`${i}\t${sin}`)
+      print(`${i}\t${sin}`)
+    imprSeno(i + 1, grades)
   }
+}
+const tableSeno = (grades) =>  imprSeno(0, grades)
+const main = async () => {
+    const grades = 359
+    const table = tableSeno(grades)
 }
 module.exports = main

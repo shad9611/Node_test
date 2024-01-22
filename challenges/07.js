@@ -4,17 +4,17 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const main = async () => {
-  const message = await read("Ingresa texto")
+const encryptROT13 = (message) => {
+  return message.replace(/[a-zA-Z]/g, (c) => {
+    const offset = c <= 'Z' ? 65 : 97
+    return String.fromCharCode((c.charCodeAt(0) - offset + 13) % 26 + offset)
+  })
+}
 
-  const encryptROT13 = (message) => {
-    return message.replace(/[a-zA-Z]/g, (c) => {
-      const offset = c <= 'Z' ? 65 : 97
-      return String.fromCharCode((c.charCodeAt(0) - offset + 13) % 26 + offset)
-    })
-  }
-  const encryptedMessage = encryptROT13(message)
-  print(`el mensaje encriptado es ${encryptedMessage}`)
+const main = async () => {
+    const message = await read("Ingresa texto")
+    const encryptedMessage = encryptROT13(message)
+      print(`el mensaje encriptado es ${encryptedMessage}`)
 }
 
 module.exports = main

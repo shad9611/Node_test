@@ -10,9 +10,9 @@ const { read, readNumber, print } = require('../helpers')
   }
 const main = async () => {
   const result = Fibonacci(100)
-  print(`Los primeros 100 números de Fibonacci son: `)
-  result.forEach((number) => {
-    print(number)
-  })
+    print(`Los primeros 100 números de Fibonacci son: `)
+      result.forEach((number) => {
+      print(number)
+    })
 }
 module.exports = main

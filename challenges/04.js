@@ -10,12 +10,10 @@ const factorial = n => {
     return n * factorial(n - 1)
   }
 }
-
 const getUserInput = async () => {
   return await readNumber('Ingrese un número: ')
 }
-const printResult = result => { print(result)}
-
+const printResult = result => print(result)
 const main = async () => {
   const n = await getUserInput()
   const result = factorial(n)

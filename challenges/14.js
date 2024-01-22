@@ -3,9 +3,19 @@
 
 const { read, readNumber, print } = require('../helpers')
 
+const decimalToRomanRec = (decimal, romanNumbers, result = '') => {
+  if (decimal > 0) {
+    const currentSymbol = romanNumbers.find((num) => decimal >= num.decimal)
+    const count = Math.floor(decimal / currentSymbol.decimal)
+    result += currentSymbol.roman.repeat(count)
+    decimal %= currentSymbol.decimal
+    return decimalToRomanRec(decimal, romanNumbers, result)
+  }
+  return result
+}
 const decimalToRoman = (decimal) => {
   if (isNaN(decimal) || decimal < 1 || decimal > 999) {
-    console.log("Ingresa solo decimales en el rango de 1 a 999")
+      print("Ingresa solo decimales en el rango de 1 a 999")
     return
   }
   const romanNumbers = [
@@ -23,24 +33,17 @@ const decimalToRoman = (decimal) => {
     { decimal: 4, roman: 'IV' },
     { decimal: 1, roman: 'I' }
   ]
-  let result = ''
-  for (let i = 0; i < romanNumbers.length; i++) {
-    const count = Math.floor(decimal / romanNumbers[i].decimal)
-    result += romanNumbers[i].roman.repeat(count)
-    decimal %= romanNumbers[i].decimal
-  }
-  return result
+  return decimalToRomanRec(decimal, romanNumbers)
 }
 const main = async () => {
   try {
     const input = await read("Ingresa un número decimal: ")
-    const romanEquivalent = decimalToRoman(input)
+    const romanEquivalent = decimalToRoman(Number(input))
     if (romanEquivalent !== undefined) {
-      console.log(`El equivalente romano de ${input} es: ${romanEquivalent}`)
+      print(`El equivalente romano de ${input} es: ${romanEquivalent}`)
     }
   } catch (error) {
     console.error("Error al leer la entrada:", error)
   }
 }
-
 module.exports = main

@@ -5,12 +5,11 @@
 const { read, readNumber, print } = require('../helpers')
 
 class RadialGeofence {
-  constructor(latCenter, lngCenter, radius) {
-    this.latCenter = latCenter
-    this.lngCenter = lngCenter
-    this.radius = radius
+    constructor(latCenter, lngCenter, radius) {
+      this.latCenter = latCenter
+      this.lngCenter = lngCenter
+      this.radius = radius
   }
-
   calculateDistance = (lat1, lng1, lat2, lng2) => {
       const radiusEarth = 6371.0
       const lat1Rad = this.degreesToRadians(lat1)
@@ -28,7 +27,6 @@ class RadialGeofence {
     return distance
   }
   degreesToRadians = (degrees) => (degrees * Math.PI) / 180
-  
   verifyLocation = (latUnit, lngUnit) => {
     const distance = this.calculateDistance(
       latUnit,
@@ -39,18 +37,16 @@ class RadialGeofence {
     return distance
   }
 }
-
 const geofences = [
-  new RadialGeofence(40.7128, -74.0060, 10),
-  new RadialGeofence(34.0522, -118.2437, 15),
-  new RadialGeofence(900, 492, 120),
+    new RadialGeofence(40.7128, -74.0060, 10),
+    new RadialGeofence(34.0522, -118.2437, 15),
+    new RadialGeofence(900, 492, 120),
 ]
-
 const main = async () => {
-  const latCenter = await readNumber('Ingrese la latitud del centro: ')
-  const lngCenter = await readNumber('Ingrese la longitud del centro: ')
-  const isItInAnyGeofence = geofences.some((geofence) =>
-    geofence.verifyLocation(latCenter, lngCenter)
+    const latCenter = await readNumber('Ingrese la latitud del centro: ')
+    const lngCenter = await readNumber('Ingrese la longitud del centro: ')
+    const isItInAnyGeofence = geofences.some((geofence) =>
+      geofence.verifyLocation(latCenter, lngCenter)
   )
   const resultElement = isItInAnyGeofence
     ? 'La unidad está dentro de la geocerca radial.'
