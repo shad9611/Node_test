@@ -3,8 +3,26 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const main = async () => {
-  print('Problema aún no resuelto')
+const convertSeconds = seconds => {
+  const hours = Math.floor(seconds / 3600)
+  const minutes = Math.floor((seconds % 3600) / 60)
+  const remainingSeconds = seconds % 60
+  return { hours, minutes, seconds: remainingSeconds }
 }
-
+const main = async () => {
+  try {
+    const userSeconds = parseInt(await read("Enter a number of seconds:"))
+    if (!isNaN(userSeconds)) {
+      const result = convertSeconds(userSeconds)
+      print(`${userSeconds} seconds is equivalent to:`)
+      print(`Hours: ${result.hours}`)
+      print(`Minutes: ${result.minutes}`)
+      print(`Seconds: ${result.seconds}`)
+    } else {
+      print("Por favor, ingresa un número válido de segundos.")
+    }
+  } catch (error) {
+    console.error("Error reading input:", error)
+  }
+}
 module.exports = main
