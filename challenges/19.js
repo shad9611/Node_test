@@ -5,8 +5,7 @@ const { read, readNumber, print } = require('../helpers')
 
 const checkExpiration = (year, month, day) => {
   const today = new Date()
-  const expirationDate = new Date(year, month - 1, day) // Meses en JavaScript van de 0 a 11
-
+  const expirationDate = new Date(year, month - 1, day)
   return expirationDate < today
     ? "El producto ha caducado."
     : expirationDate.toDateString() === today.toDateString()
@@ -25,7 +24,6 @@ const main = async () => {
     const expirationYear = await readNumberAsync("Ingrese el año de caducidad: ")
     const expirationMonth = await readNumberAsync("Ingrese el mes de caducidad: ")
     const expirationDay = await readNumberAsync("Ingrese el día de caducidad: ")
-
     if (expirationYear !== null && expirationMonth !== null && expirationDay !== null) {
       const result = checkExpiration(expirationYear, expirationMonth, expirationDay)
       print(result)
