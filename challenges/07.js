@@ -12,9 +12,9 @@ const encryptROT13 = (message) => {
 }
 
 const main = async () => {
-    const message = await read("Ingresa texto")
-    const encryptedMessage = encryptROT13(message)
-      print(`el mensaje encriptado es ${encryptedMessage}`)
+  const message = await read("Ingresa texto")
+  const encryptedMessage = encryptROT13(message)
+  print(`El mensaje encriptado es: ${encryptedMessage}`)
 }
 
 module.exports = main

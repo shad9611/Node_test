@@ -7,6 +7,7 @@ const isMultiple = n => {
   const res = n % 3 === 0 && n % 5 ===0
   return res
 }
+
 const main = async () => {
   const n = await readNumber('Ingrese un número: ')
   if (isMultiple(n))

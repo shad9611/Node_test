@@ -13,11 +13,13 @@ const decimalToRomanRec = (decimal, romanNumbers, result = '') => {
   }
   return result
 }
+
 const decimalToRoman = (decimal) => {
   if (isNaN(decimal) || decimal < 1 || decimal > 999) {
-      print("Ingresa solo decimales en el rango de 1 a 999")
+    print("Ingresa solo decimales en el rango de 1 a 999")
     return
   }
+
   const romanNumbers = [
     { decimal: 1000, roman: 'M' },
     { decimal: 900, roman: 'CM' },
@@ -33,12 +35,22 @@ const decimalToRoman = (decimal) => {
     { decimal: 4, roman: 'IV' },
     { decimal: 1, roman: 'I' }
   ]
+
   return decimalToRomanRec(decimal, romanNumbers)
 }
+
 const main = async () => {
   try {
     const input = await read("Ingresa un número decimal: ")
-    const romanEquivalent = decimalToRoman(Number(input))
+    const decimalInput = Number(input)
+
+    if (isNaN(decimalInput) || decimalInput % 1 !== 0) {
+      print("Ingresa solo números enteros.")
+      return
+    }
+
+    const romanEquivalent = decimalToRoman(decimalInput)
+
     if (romanEquivalent !== undefined) {
       print(`El equivalente romano de ${input} es: ${romanEquivalent}`)
     }
@@ -46,4 +58,5 @@ const main = async () => {
     console.error("Error al leer la entrada:", error)
   }
 }
+
 module.exports = main
