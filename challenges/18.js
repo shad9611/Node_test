@@ -9,6 +9,7 @@ const convertSeconds = seconds => {
   const remainingSeconds = seconds % 60
   return { hours, minutes, seconds: remainingSeconds }
 }
+
 const main = async () => {
   try {
     const userSeconds = parseInt(await read("Enter a number of seconds:"))
