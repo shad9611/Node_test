@@ -10,11 +10,11 @@ const countWordsAndCharacters  = (text) => {
     const numCharacters = trimmedText.length
   return { numWords, numCharacters }
 }
+
 const main = async () => {
     const userText =  await read("ingresa texto:")
     const result = countWordsAndCharacters (userText)
       print("Numbers of words:", result.numWords)
       print("Number of characters:", result.numCharacters)
 }
-
 module.exports = main
