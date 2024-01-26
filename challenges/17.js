@@ -18,5 +18,4 @@ const main = async () => {
   print("Número de caracteres:", result.numCharacters)
 }
 
-
 module.exports = main

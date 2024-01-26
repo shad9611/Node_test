@@ -21,20 +21,15 @@ const calculateAgeInDays = (birthYear, birthMonth, birthDay) => {
 }
 
 const main = async () => {
-  try {
-    const birthYear = await readNumber("Ingresa año de nacimiento: ")
-    const birthMonth = await readNumber("Ingresa mes de nacimiento: ")
-    const birthDay = await readNumber("Ingresa día de nacimiento: ")
-    const age = calculateAge(birthYear, birthMonth, birthDay)
-    if (age < 1) {
-      const ageInDays = calculateAgeInDays(birthYear, birthMonth, birthDay)
-      print(`La edad actual es menos de 1 año y equivale a aproximadamente ${Math.round(ageInDays)} días.`)
-    } else {
-      print(`La edad actual es: ${age} años.`)
-    }
-  } catch (error) {
-    console.error("Error al leer la entrada:", error)
-  }
+  const birthYear = await readNumber("Ingresa año de nacimiento: ")
+  const birthMonth = await readNumber("Ingresa mes de nacimiento: ")
+  const birthDay = await readNumber("Ingresa día de nacimiento: ")
+  const age = calculateAge(birthYear, birthMonth, birthDay)
+  if (age < 1) {
+    const ageInDays = calculateAgeInDays(birthYear, birthMonth, birthDay)
+    print(`La edad actual es menos de 1 año y equivale a aproximadamente ${Math.round(ageInDays)} días.`)
+  } else
+    print(`La edad actual es: ${age} años.`)
 }
 
 module.exports = main

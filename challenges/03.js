@@ -19,9 +19,10 @@ class RadialGeofence {
     const lng2Rad = this.degreesToRadians(lng2)
     const dlat = lat2Rad - lat1Rad
     const dlng = lng2Rad - lng1Rad
-    const a =
-      Math.sin(Math.pow(dlat / 2, 2)) +
-      Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(Math.pow(dlng / 2, 2))
+    const lat = Math.sin(Math.pow(dlat / 2, 2))
+    const lng = Math.sin(Math.pow(dlng / 2, 2))
+    const Rad = Math.cos(lat1Rad) * Math.cos(lat2Rad)
+    const a = lat + Rad * lng
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
     const distance = radiusEarth * c
     return distance
@@ -60,4 +61,5 @@ const main = async () => {
 
   print(resultElement)
 }
+
 module.exports = main

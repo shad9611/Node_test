@@ -15,4 +15,5 @@ const main = async () => {
   else
     print(`El número '${n}' no es múltiplo de 3 y de 5.`)
 }
+
 module.exports = main

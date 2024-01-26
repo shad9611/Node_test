@@ -13,14 +13,18 @@
 
 const { read, readNumber, print } = require("../helpers");
 
-const wxG = {
+const redondearCambio = {
     redondear: (valor, decimales) => {
       const factor = Math.pow(10, decimales)
       return Math.round(valor * factor) / factor
     }
   }
   
-  const devolverCambioRec = (valor, denominacion, cambio = Array(denominacion.length).fill(0), valorCambio = 0, j = 0, numIter = 1) => {
+  const devolverCambioRec = (valor, denominacion,
+    cambio = Array(denominacion.length).fill(0),
+    valorCambio = 0, j = 0,
+    numIter = 1) => {
+
     if (valorCambio < valor) {
       numIter++
       if (valorCambio + denominacion[j] <= valor) {
@@ -57,11 +61,12 @@ const wxG = {
   const main = async () => {
     const venta = parseFloat(await readNumber("El total a pagar es: "))
     const cash = parseFloat(await readNumber("Paga con: "))
-    const total = wxG.redondear(cash - venta, 2)
+    const total = redondearCambio.redondear(cash - venta, 2)
     print(`El total a pagar es: ${venta} y vas a pagar con: ${cash}.`)
     print(`Tu cambio es: ${total}`)
     const denominacion = [500, 200, 100, 20, 10, 5, 2, 1]
     const cambio = devolverCambio(total, denominacion)
     imprimirCambioRec(cambio, denominacion)
   }
+  
 module.exports = main;

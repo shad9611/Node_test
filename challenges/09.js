@@ -8,7 +8,7 @@ const { read, readNumber, print } = require('../helpers')
 
 const calc = (time) => {
   const g = 9.81
-  const distance = 0.5 * g * Math.pow(time, 2) // Fórmula: distancia = 1/2gt^2
+  const distance = 0.5 * g * Math.pow(time, 2)
   return distance
 }
 

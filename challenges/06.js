@@ -6,9 +6,9 @@ const { read, readNumber, print } = require('../helpers')
 
 const main = async () => {
   const cm = await readNumber("Ingrese su altura:")
-  const altura = cm /100
+  const altura = cm / 100
   const kg = await readNumber("Ingresa tu peso:")
-  const imc = (kg/Math.pow(altura,2))
+  const imc = (kg / Math.pow(altura,2))
     print(`Tu IMC es: ${imc.toFixed(2)}`)
 }
 

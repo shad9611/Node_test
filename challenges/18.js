@@ -11,19 +11,15 @@ const convertSeconds = seconds => {
 }
 
 const main = async () => {
-  try {
-    const userSeconds = parseInt(await read("Enter a number of seconds:"))
-    if (!isNaN(userSeconds)) {
-      const result = convertSeconds(userSeconds)
-      print(`${userSeconds} seconds is equivalent to:`)
-      print(`Hours: ${result.hours}`)
-      print(`Minutes: ${result.minutes}`)
-      print(`Seconds: ${result.seconds}`)
-    } else {
-      print("Por favor, ingresa un número válido de segundos.")
-    }
-  } catch (error) {
-    console.error("Error reading input:", error)
-  }
+  const userSeconds = await readNumber("Enter a number of seconds:")
+  if (!isNaN(userSeconds)) {
+    const result = convertSeconds(userSeconds)
+    print(`${userSeconds} seconds is equivalent to:`)
+    print(`Hours: ${result.hours}`)
+    print(`Minutes: ${result.minutes}`)
+    print(`Seconds: ${result.seconds}`)
+  } else
+    print("Por favor, ingresa un número válido de segundos.")
 }
+
 module.exports = main

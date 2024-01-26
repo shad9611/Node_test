@@ -18,22 +18,17 @@ const findRomanNumber = symbol => romanNumbers.find(num => num.symbol === symbol
 const romanToDecimalRec = (roman, result = 0, i = 0) => {
   if (i < roman.length) {
     const currentSymbol = findRomanNumber(roman[i])
-
     if (!currentSymbol) {
       print("Símbolo no válido")
       return
     }
-
     const nextSymbol = findRomanNumber(roman[i + 1])
-
     if (nextSymbol && nextSymbol.value > currentSymbol.value)
       result -= currentSymbol.value
     else
       result += currentSymbol.value
-
     return romanToDecimalRec(roman, result, i + 1)
   }
-
   return result
 }
 
@@ -45,9 +40,8 @@ const romanToDecimal = (roman) => {
 const main = async () => {
   const input = await read("Ingresa un número romano: ")
   const decimalEquivalent = romanToDecimal(input)
-
   if (decimalEquivalent !== undefined)
-    print(`El equivalente decimal de ${input.toUpperCase()} es: ${decimalEquivalent}`)
+  print(`El equivalente decimal de ${input.toUpperCase()} es: ${decimalEquivalent}`)
 }
 
 module.exports = main

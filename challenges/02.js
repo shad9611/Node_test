@@ -9,7 +9,9 @@ const main = async () => {
   const y1 = point1[1]
   const x2 = point2[0]
   const y2 = point2[1]
-  const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
+  const XPow = Math.pow(x2 - x1, 2)
+  const YPow = Math.pow(y2 - y1, 2)
+  const distance = Math.sqrt(XPow + YPow)
   print(`La distancia es: ${distance.toFixed(2)}`)
 }
 
@@ -18,4 +20,5 @@ const readPoint = async (message) => {
   const y = await readNumber(`${message} Y: `)
   return [x, y]
 }
+
 module.exports = main

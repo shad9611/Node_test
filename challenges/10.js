@@ -10,4 +10,5 @@ const main = async () => {
   const angle = calRadians(parseFloat(n))
   print(`El Angulo ingresado es equivalente a ${angle.toFixed(2)} grados`)
 }
+
 module.exports = main

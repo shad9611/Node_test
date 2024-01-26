@@ -13,8 +13,8 @@ const CalHypotenuse = (n1 , n2)=>{
 const main = async () => {
   const n1 = await readNumber('Ingrese el valor del cateto A: ')
   const n2 = await readNumber('Ingrese el valor del cateto B: ')
-
   const result = CalHypotenuse(n1 , n2)
   print(`El valor de la hipotenusa es: ${result}`)
 }
+
 module.exports = main
