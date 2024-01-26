@@ -2,8 +2,17 @@
 
 const { read, readNumber, print } = require('../helpers')
 
+const number = n => {
+  if( n < 101 ){
+    return [n, ...number(n + 1)]
+  }
+  return []
+}
 const main = async () => {
-  print('Problema aún no resuelto')
+  const result = number(1)
+  result.forEach(num => {
+    print(`${num}`)
+  })
 }
 
 module.exports = main
