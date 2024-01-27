@@ -6,8 +6,20 @@
 
 const { read, readNumber, print } = require('../helpers')
 
+const convertHexToRgb = hex => {
+  hex = hex.replace(/^#/, '')
+
+  const r = parseInt(hex.substring(0, 2), 16)
+  const g = parseInt(hex.substring(2, 4), 16)
+  const b = parseInt(hex.substring(4, 6), 16)
+
+  return [r, g, b]
+}
+
 const main = async () => {
-  print('Problema aún no resuelto')
+  const hex = await read("Ingresa un color en Hexadecimal")
+  const color = convertHexToRgb(hex)
+  print(`El color Rgb para ${hex} es: (${color.join(", ")})`)
 }
 
 module.exports = main

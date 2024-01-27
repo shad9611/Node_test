@@ -11,16 +11,16 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const imprSeno = (i, grades) => {
+const printSin = (i, grades) => {
   if (i <= grades) {
     const radians = i * (Math.PI / 180)
     const sin = Math.sin(radians)
     print(`${i}\t${sin}`)
-    imprSeno(i + 1, grades)
+    printSin(i + 1, grades)
   }
 }
 
-const tableSeno = (grades) => imprSeno(0, grades)
+const tableSeno = (grades) => printSin(0, grades)
 
 const main = async () => {
   const grades = 359

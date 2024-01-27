@@ -3,10 +3,7 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const isMultiple = n => {
-  const res = n % 3 === 0 && n % 5 ===0
-  return res
-}
+const isMultiple = n => n % 3 === 0 && n % 5 ===0
 
 const main = async () => {
   const n = await readNumber('Ingrese un número: ')

@@ -12,7 +12,7 @@ const main = async () => {
   const XPow = Math.pow(x2 - x1, 2)
   const YPow = Math.pow(y2 - y1, 2)
   const distance = Math.sqrt(XPow + YPow)
-  print(`La distancia es: ${distance.toFixed(2)}`)
+  print (`La distancia es: ${distance.toFixed(2)}`)
 }
 
 const readPoint = async (message) => {

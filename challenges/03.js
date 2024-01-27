@@ -17,12 +17,14 @@ class RadialGeofence {
     const lng1Rad = this.degreesToRadians(lng1)
     const lat2Rad = this.degreesToRadians(lat2)
     const lng2Rad = this.degreesToRadians(lng2)
+
     const dlat = lat2Rad - lat1Rad
     const dlng = lng2Rad - lng1Rad
-    const lat = Math.sin(Math.pow(dlat / 2, 2))
-    const lng = Math.sin(Math.pow(dlng / 2, 2))
-    const Rad = Math.cos(lat1Rad) * Math.cos(lat2Rad)
-    const a = lat + Rad * lng
+    const dlatPow = Math.sin(Math.pow(dlat / 2, 2))
+    const dlngPow = Math.sin(Math.pow(dlng / 2, 2))
+    const resultSinLat = Math.cos(lat1Rad) * Math.cos(lat2Rad)
+    
+    const a = dlatPow + resultSinLat * dlngPow
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
     const distance = radiusEarth * c
     return distance
@@ -59,7 +61,7 @@ const main = async () => {
     ? 'La unidad está dentro de la geocerca radial.'
     : 'La unidad está fuera de la geocerca radial.'
 
-  print(resultElement)
+  print (resultElement)
 }
 
 module.exports = main
