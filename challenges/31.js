@@ -2,8 +2,8 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const main = async () => {
-  print('Problema aún no resuelto')
-}
+const loop = (n = 2) => n < 101 ? [n, ...loop(n + 2)] : []
+
+const main = async () =>  print(loop())
 
 module.exports = main
