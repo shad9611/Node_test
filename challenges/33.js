@@ -10,8 +10,8 @@ const isPrime = num => {
   return num > 1
 }
 
-const loopNonPrimes = (n = 3) => n < 101 ? (isPrime(n) ? loopNonPrimes(n + 2) : [n, ...loopNonPrimes(n + 2)]) : []
+const loopNonPrimes = (n = 1) => n < 101 ? (isPrime(n) ? loopNonPrimes(n + 1) : [n, ...loopNonPrimes(n + 2)]) : []
 
-const main = async () => print (loopNonPrimes())
+const main = async () => print(loopNonPrimes())
 
 module.exports = main
