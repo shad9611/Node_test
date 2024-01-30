@@ -2,7 +2,16 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const loop = (n = 1) => n < 101 ? [n, ...loop(n + 2)] : []
+const isPrime = num => {
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0)
+        return false
+    }
+    return num > 1
+  }
+  
+  const loop = (n = 1) => n < 101 ? (isPrime(n) ? [n, ...loop(n + 2)] : loop(n + 2)) : []
+  
 
 const main = async () => print (loop())
 
