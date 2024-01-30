@@ -2,8 +2,16 @@
 
 const { read, readNumber, print } = require('../helpers')
 
-const main = async () => {
-  print('Problema aún no resuelto')
+const isPrime = num => {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0)
+      return false
+  }
+  return num > 1
 }
+
+const loopNonPrimes = (n = 3) => n < 101 ? (isPrime(n) ? loopNonPrimes(n + 2) : [n, ...loopNonPrimes(n + 2)]) : []
+
+const main = async () => print (loopNonPrimes())
 
 module.exports = main
