@@ -24,7 +24,6 @@ const countChar = (text) =>{
 const main = async () => {
   const text = await read("Ingresa un texto: ")
   const repeatedChar = countChar(text)
-
   if (repeatedChar) {
     print(`La letra '${repeatedChar}' está repetida en el texto.`)
   } else {
