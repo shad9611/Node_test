@@ -7,8 +7,30 @@
 
 const { read, readNumber, print } = require('../helpers')
 
+const loopNumber = (n = 1) => n < 101 ? [n, ...loopNumber(n + 1)] : []
+
+const rules = [
+  { divisor: 3, output: "bizz" },
+  { divisor: 5, output: "buzz" },
+]
+
+const bizzbuzz = (n) => {
+  const result = rules.reduce((acc, rule) => {
+    if (n % rule.divisor === 0) {
+      acc += rule.output
+    }
+    return acc
+  }, "")
+
+  return result || n.toString()
+}
+
 const main = async () => {
-  print('Problema aún no resuelto')
+  const numbers = loopNumber()
+  numbers.forEach((number) => {
+    const result = bizzbuzz(number)
+    console.log(result)
+  })
 }
 
 module.exports = main
