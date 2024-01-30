@@ -7,8 +7,29 @@
 
 const { read, readNumber, print } = require('../helpers')
 
+const countChar = (text) =>{
+  const characters = new Set()
+  for (let char of text) {
+    if (/^[a-zA-Z]$/.test(char)){
+      const lowerChar = char.toLowerCase()
+      if (characters.has(lowerChar)) {
+        return lowerChar
+      }
+      characters.add(lowerChar)
+    }
+  }
+  return null
+}
+
 const main = async () => {
-  print('Problema aún no resuelto')
+  const text = await read("Ingresa un texto: ")
+  const repeatedChar = countChar(text)
+
+  if (repeatedChar) {
+    print(`La letra '${repeatedChar}' está repetida en el texto.`)
+  } else {
+    print("El texto tiene caracteres únicos.")
+  }
 }
 
 module.exports = main
